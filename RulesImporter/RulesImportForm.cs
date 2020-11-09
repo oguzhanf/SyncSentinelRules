@@ -18,7 +18,7 @@ namespace RulesImporter
     {
         public RulesImportForm()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             dt = new DataTable();
             id = new DataColumn("id", typeof(string));
             name = new DataColumn("name", typeof(string));
