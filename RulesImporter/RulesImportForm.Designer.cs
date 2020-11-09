@@ -37,18 +37,18 @@
             this.AppRegistrationDetails = new AeroWizard.WizardPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtResourceGroup = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtWorkspaceName = new System.Windows.Forms.TextBox();
+            this.txtSubscriptionID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtTenantID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtClientID = new System.Windows.Forms.TextBox();
+            this.txtClientSecret = new System.Windows.Forms.TextBox();
             this.localSentinelRepoDetailsPage = new AeroWizard.WizardPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -58,6 +58,7 @@
             this.lblRulesImported = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SentinelGitHubRepo = new AeroWizard.WizardPage();
+            this.txtImportProgress = new System.Windows.Forms.TextBox();
             this.EndPage = new AeroWizard.WizardPage();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
@@ -69,6 +70,7 @@
             this.localSentinelRepoDetailsPage.SuspendLayout();
             this.ParseLocalRepo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SentinelGitHubRepo.SuspendLayout();
             this.SuspendLayout();
             // 
             // wizardControl1
@@ -86,8 +88,10 @@
             this.wizardControl1.Pages.Add(this.ParseLocalRepo);
             this.wizardControl1.Pages.Add(this.SentinelGitHubRepo);
             this.wizardControl1.Pages.Add(this.EndPage);
-            this.wizardControl1.Size = new System.Drawing.Size(1192, 879);
+            this.wizardControl1.Size = new System.Drawing.Size(1178, 861);
             this.wizardControl1.TabIndex = 0;
+            this.wizardControl1.Title = "Sentinel Analytics Rule Importer - SARI";
+            this.wizardControl1.SelectedPageChanged += new System.EventHandler(this.wizardControl1_SelectedPageChanged);
             // 
             // EntryPage
             // 
@@ -95,18 +99,22 @@
             this.EntryPage.Controls.Add(this.textBox1);
             this.EntryPage.Name = "EntryPage";
             this.EntryPage.NextPage = this.AppRegistration;
-            this.EntryPage.Size = new System.Drawing.Size(1145, 689);
+            this.EntryPage.Size = new System.Drawing.Size(1115, 711);
             this.EntryPage.TabIndex = 0;
             this.EntryPage.Text = "Welcome to Sentinel Analytics Rules Importer - SARI";
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(61, 138);
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(20, 24);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(999, 391);
+            this.textBox1.Size = new System.Drawing.Size(1079, 671);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
@@ -114,17 +122,21 @@
             // 
             this.AppRegistration.Controls.Add(this.textBox2);
             this.AppRegistration.Name = "AppRegistration";
-            this.AppRegistration.Size = new System.Drawing.Size(1145, 689);
+            this.AppRegistration.Size = new System.Drawing.Size(1400, 672);
             this.AppRegistration.TabIndex = 1;
             this.AppRegistration.Text = "Create an app registration in Azure Active Directory";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(84, 76);
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(17, 18);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(967, 460);
+            this.textBox2.Size = new System.Drawing.Size(1362, 627);
             this.textBox2.TabIndex = 0;
             this.textBox2.Text = resources.GetString("textBox2.Text");
             // 
@@ -133,23 +145,25 @@
             this.AppRegistrationDetails.Controls.Add(this.groupBox2);
             this.AppRegistrationDetails.Controls.Add(this.groupBox1);
             this.AppRegistrationDetails.Name = "AppRegistrationDetails";
-            this.AppRegistrationDetails.Size = new System.Drawing.Size(1145, 689);
+            this.AppRegistrationDetails.Size = new System.Drawing.Size(1110, 606);
             this.AppRegistrationDetails.TabIndex = 5;
             this.AppRegistrationDetails.Text = "Add app registration and other details";
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.txtResourceGroup);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.txtWorkspaceName);
+            this.groupBox2.Controls.Add(this.txtSubscriptionID);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox8);
+            this.groupBox2.Controls.Add(this.txtTenantID);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(74, 60);
+            this.groupBox2.Location = new System.Drawing.Point(19, 23);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(951, 227);
+            this.groupBox2.Size = new System.Drawing.Size(1069, 227);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Subscription and Sentinel details";
@@ -163,12 +177,14 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "SubscriptionID:";
             // 
-            // textBox6
+            // txtResourceGroup
             // 
-            this.textBox6.Location = new System.Drawing.Point(246, 153);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(650, 31);
-            this.textBox6.TabIndex = 7;
+            this.txtResourceGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResourceGroup.Location = new System.Drawing.Point(246, 153);
+            this.txtResourceGroup.Name = "txtResourceGroup";
+            this.txtResourceGroup.Size = new System.Drawing.Size(802, 31);
+            this.txtResourceGroup.TabIndex = 7;
             // 
             // label6
             // 
@@ -179,19 +195,23 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "TenantID:";
             // 
-            // textBox5
+            // txtWorkspaceName
             // 
-            this.textBox5.Location = new System.Drawing.Point(246, 113);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(650, 31);
-            this.textBox5.TabIndex = 5;
+            this.txtWorkspaceName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWorkspaceName.Location = new System.Drawing.Point(246, 113);
+            this.txtWorkspaceName.Name = "txtWorkspaceName";
+            this.txtWorkspaceName.Size = new System.Drawing.Size(802, 31);
+            this.txtWorkspaceName.TabIndex = 5;
             // 
-            // textBox7
+            // txtSubscriptionID
             // 
-            this.textBox7.Location = new System.Drawing.Point(246, 33);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(650, 31);
-            this.textBox7.TabIndex = 9;
+            this.txtSubscriptionID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubscriptionID.Location = new System.Drawing.Point(246, 33);
+            this.txtSubscriptionID.Name = "txtSubscriptionID";
+            this.txtSubscriptionID.Size = new System.Drawing.Size(802, 31);
+            this.txtSubscriptionID.TabIndex = 9;
             // 
             // label4
             // 
@@ -202,12 +222,14 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Resource group:";
             // 
-            // textBox8
+            // txtTenantID
             // 
-            this.textBox8.Location = new System.Drawing.Point(246, 73);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(650, 31);
-            this.textBox8.TabIndex = 11;
+            this.txtTenantID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTenantID.Location = new System.Drawing.Point(246, 73);
+            this.txtTenantID.Name = "txtTenantID";
+            this.txtTenantID.Size = new System.Drawing.Size(802, 31);
+            this.txtTenantID.TabIndex = 11;
             // 
             // label3
             // 
@@ -220,13 +242,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Location = new System.Drawing.Point(74, 302);
+            this.groupBox1.Controls.Add(this.txtClientID);
+            this.groupBox1.Controls.Add(this.txtClientSecret);
+            this.groupBox1.Location = new System.Drawing.Point(19, 272);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(951, 141);
+            this.groupBox1.Size = new System.Drawing.Size(1069, 141);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "App registration details";
@@ -249,19 +273,23 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "ClientSecret:";
             // 
-            // textBox3
+            // txtClientID
             // 
-            this.textBox3.Location = new System.Drawing.Point(246, 38);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(650, 31);
-            this.textBox3.TabIndex = 0;
+            this.txtClientID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtClientID.Location = new System.Drawing.Point(246, 38);
+            this.txtClientID.Name = "txtClientID";
+            this.txtClientID.Size = new System.Drawing.Size(802, 31);
+            this.txtClientID.TabIndex = 0;
             // 
-            // textBox4
+            // txtClientSecret
             // 
-            this.textBox4.Location = new System.Drawing.Point(246, 78);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(650, 31);
-            this.textBox4.TabIndex = 2;
+            this.txtClientSecret.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtClientSecret.Location = new System.Drawing.Point(246, 78);
+            this.txtClientSecret.Name = "txtClientSecret";
+            this.txtClientSecret.Size = new System.Drawing.Size(802, 31);
+            this.txtClientSecret.TabIndex = 2;
             // 
             // localSentinelRepoDetailsPage
             // 
@@ -270,7 +298,7 @@
             this.localSentinelRepoDetailsPage.Controls.Add(this.txtLocalRepoPath);
             this.localSentinelRepoDetailsPage.Controls.Add(this.label7);
             this.localSentinelRepoDetailsPage.Name = "localSentinelRepoDetailsPage";
-            this.localSentinelRepoDetailsPage.Size = new System.Drawing.Size(1145, 689);
+            this.localSentinelRepoDetailsPage.Size = new System.Drawing.Size(1131, 671);
             this.localSentinelRepoDetailsPage.TabIndex = 6;
             this.localSentinelRepoDetailsPage.Text = "Path to the local Sentinel repo";
             // 
@@ -301,7 +329,7 @@
             // 
             this.txtLocalRepoPath.Location = new System.Drawing.Point(76, 443);
             this.txtLocalRepoPath.Name = "txtLocalRepoPath";
-            this.txtLocalRepoPath.Size = new System.Drawing.Size(744, 31);
+            this.txtLocalRepoPath.Size = new System.Drawing.Size(924, 31);
             this.txtLocalRepoPath.TabIndex = 1;
             // 
             // label7
@@ -319,7 +347,7 @@
             this.ParseLocalRepo.Controls.Add(this.lblRulesImported);
             this.ParseLocalRepo.Controls.Add(this.dataGridView1);
             this.ParseLocalRepo.Name = "ParseLocalRepo";
-            this.ParseLocalRepo.Size = new System.Drawing.Size(1145, 689);
+            this.ParseLocalRepo.Size = new System.Drawing.Size(1131, 671);
             this.ParseLocalRepo.TabIndex = 2;
             this.ParseLocalRepo.Text = "Parse results on local repo path";
             this.ParseLocalRepo.Initialize += new System.EventHandler<AeroWizard.WizardPageInitEventArgs>(this.ParseLocalRepo_Initialize);
@@ -327,7 +355,7 @@
             // lblRulesImported
             // 
             this.lblRulesImported.AutoSize = true;
-            this.lblRulesImported.Location = new System.Drawing.Point(17, 14);
+            this.lblRulesImported.Location = new System.Drawing.Point(14, 10);
             this.lblRulesImported.Name = "lblRulesImported";
             this.lblRulesImported.Size = new System.Drawing.Size(0, 25);
             this.lblRulesImported.TabIndex = 1;
@@ -336,28 +364,49 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 77);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 51);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1103, 583);
+            this.dataGridView1.Size = new System.Drawing.Size(1103, 605);
             this.dataGridView1.TabIndex = 0;
             // 
             // SentinelGitHubRepo
             // 
+            this.SentinelGitHubRepo.Controls.Add(this.txtImportProgress);
             this.SentinelGitHubRepo.Name = "SentinelGitHubRepo";
-            this.SentinelGitHubRepo.Size = new System.Drawing.Size(1145, 689);
+            this.SentinelGitHubRepo.Size = new System.Drawing.Size(1131, 671);
             this.SentinelGitHubRepo.TabIndex = 3;
             this.SentinelGitHubRepo.Text = "Write to Sentinel";
+            this.SentinelGitHubRepo.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.SentinelGitHubRepo_Commit);
             this.SentinelGitHubRepo.Initialize += new System.EventHandler<AeroWizard.WizardPageInitEventArgs>(this.SentinelGitHubRepo_Initialize);
+            // 
+            // txtImportProgress
+            // 
+            this.txtImportProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtImportProgress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtImportProgress.Enabled = false;
+            this.txtImportProgress.Location = new System.Drawing.Point(13, 17);
+            this.txtImportProgress.Multiline = true;
+            this.txtImportProgress.Name = "txtImportProgress";
+            this.txtImportProgress.ReadOnly = true;
+            this.txtImportProgress.Size = new System.Drawing.Size(1104, 643);
+            this.txtImportProgress.TabIndex = 0;
             // 
             // EndPage
             // 
             this.EndPage.IsFinishPage = true;
             this.EndPage.Name = "EndPage";
-            this.EndPage.Size = new System.Drawing.Size(1145, 689);
+            this.EndPage.Size = new System.Drawing.Size(1131, 671);
             this.EndPage.TabIndex = 4;
             this.EndPage.Text = "Rules import has completed";
             // 
@@ -365,11 +414,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1192, 879);
+            this.ClientSize = new System.Drawing.Size(1178, 861);
             this.Controls.Add(this.wizardControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(1200, 900);
             this.Name = "RulesImportForm";
+            this.Text = "SARI";
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).EndInit();
             this.EntryPage.ResumeLayout(false);
             this.EntryPage.PerformLayout();
@@ -385,6 +436,8 @@
             this.ParseLocalRepo.ResumeLayout(false);
             this.ParseLocalRepo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.SentinelGitHubRepo.ResumeLayout(false);
+            this.SentinelGitHubRepo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -400,19 +453,19 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private AeroWizard.WizardPage AppRegistrationDetails;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtClientID;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtClientSecret;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtResourceGroup;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtWorkspaceName;
+        private System.Windows.Forms.TextBox txtSubscriptionID;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtTenantID;
         private System.Windows.Forms.Label label3;
         private AeroWizard.WizardPage localSentinelRepoDetailsPage;
         private System.Windows.Forms.Button button1;
@@ -422,5 +475,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label lblRulesImported;
+        private System.Windows.Forms.TextBox txtImportProgress;
     }
 }
