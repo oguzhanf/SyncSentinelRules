@@ -57,19 +57,7 @@ namespace RulesImporter
 
         }
 
-        private void wizardControl1_SelectedPageChanged(object sender, EventArgs e)
-        {
-            if (Environment.MachineName == "DEKSTOP")
-            {
-                txtSubscriptionID.Text = "15230364-054e-4c9d-944d-352891ddcea0";
-                txtTenantID.Text = "a46bfb0c-d90b-4f42-992d-532681d1f9eb";
-                txtWorkspaceName.Text = "OzSentinel";
-                txtResourceGroup.Text = "sentinelRG";
-                txtClientID.Text = "46c225bb-13f6-4683-8e47-5e3ad3218b9f";
-                txtClientSecret.Text = "bURYc31b2ff178W_ssI4-ZOW_ApP6h2_fV";
-                txtLocalRepoPath.Text = @"C:\Users\su\Documents\GitHub\Azure-Sentinel\Detections";
-            }
-        }
+    
 
         private async void SentinelGitHubRepo_Initialize(object sender, AeroWizard.WizardPageInitEventArgs e)
         {

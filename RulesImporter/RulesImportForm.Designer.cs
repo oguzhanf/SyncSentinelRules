@@ -91,7 +91,7 @@
             this.wizardControl1.Size = new System.Drawing.Size(1178, 861);
             this.wizardControl1.TabIndex = 0;
             this.wizardControl1.Title = "Sentinel Analytics Rule Importer - SARI";
-            this.wizardControl1.SelectedPageChanged += new System.EventHandler(this.wizardControl1_SelectedPageChanged);
+            
             // 
             // EntryPage
             // 
